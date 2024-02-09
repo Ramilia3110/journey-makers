@@ -3,7 +3,7 @@
   text-align: center;
 
   .top-heading {
-    font-size: 3rem;
+    font-size: 4.5rem;
     font-weight: 400;
     padding: 1.5rem 3rem;
 
@@ -97,6 +97,9 @@
 }
 
 @media screen and (max-width: 992px) {
+  .about .top-heading {
+    font-size: 2.5rem;
+  }
   .about-container {
     flex-direction: column;
     .about-content {

@@ -4,6 +4,8 @@ import { MdKeyboardArrowLeft } from "react-icons/md";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import images from "./../../constants/images";
 import Header from "./../header/Header";
+import { motion } from "framer-motion";
+
 const destinationsArray = [
   { id: "istanbul", img: images.c1, text: "From Istanbul with love!" },
   { id: "london", img: images.c2, text: "Lovely day for a walk!" },
@@ -34,13 +36,33 @@ const Cover = () => {
     }
   };
 
+  const upVariants = {
+    hidden: { y: 100, opacity: 0 },
+    show: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        delay: 0.2,
+        y: { type: "spring", stiffness: 60 },
+        opacity: { duration: 1 },
+        ease: "easeIn",
+        duration: 1,
+      },
+    },
+  };
+
   return (
     <div className="cover">
       <Header />
       <div className="cover-top">
-        <div className="cover-top__img">
+        <motion.div
+          className="cover-top__img"
+          initial="hidden"
+          whileInView="show"
+          variants={upVariants}
+        >
           <img src={selectedDestination.img} alt="" />
-        </div>
+        </motion.div>
         <h1 className="cover-top__title">{selectedDestination.text}</h1>
       </div>
       <div className="cover-bottom">
