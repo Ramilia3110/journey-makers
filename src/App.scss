@@ -1,0 +1,92 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Poppins:wght@400;500;600;700&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Satisfy&display=swap");
+
+:root {
+  --primary-color: #5186dc;
+  --secondary-color: #142a4c;
+  --comp-pink: #dc5186;
+  --comp-pink-dark: #ac2e5f;
+  --comp-green: #86dc51;
+  --comp-yellow: #eab868;
+  --font-color: #edf2fb;
+  --black: #292929;
+}
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+body {
+  padding: 0;
+  margin: 0;
+  scroll-behavior: smooth;
+  color: black;
+}
+section {
+  min-height: 100vh;
+}
+img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+ul {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+}
+.btn {
+  background-color: var(--comp-pink);
+  padding: 1.5rem 3rem;
+  border-radius: 1.5rem;
+  font-size: 1.6rem;
+  border: none;
+  color: #ffffff;
+  outline: none;
+  transition: background-color 1s ease;
+  &:hover {
+    background-color: var(--primary-color);
+  }
+}
+
+.app {
+  width: 100vw;
+  overflow: hidden;
+  height: auto;
+  background-color: rgb(253, 252, 249);
+}
+.wrapper {
+  width: 80%;
+  margin: auto;
+}
+
+@mixin minimobile {
+  @media (max-width: 480px) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+@mixin tablet {
+  @media (max-width: 991px) {
+    @content;
+  }
+}
+@mixin desktop {
+  @media (max-width: 1366px) {
+    @content;
+  }
+}

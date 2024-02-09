@@ -1,0 +1,111 @@
+@import "../../App.scss";
+
+.gallery {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  width: 100%;
+}
+
+.gallery-container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2rem;
+  padding: 0 1.2rem;
+  justify-items: center;
+  align-items: center;
+}
+
+.gallery-box {
+  width: 100%;
+  height: 200px;
+  cursor: pointer;
+}
+
+.gallery .pics {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.gallery-box:nth-child(1) {
+  grid-column: span 2;
+  grid-row: span 1;
+}
+
+.gallery-box:nth-child(7) {
+  grid-column: span 2;
+  grid-row: span 1;
+}
+
+.model {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #000000;
+  visibility: hidden;
+  opacity: 0;
+  transform: scale(0);
+  overflow: hidden;
+  z-index: 110;
+}
+.model-close {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  width: 3rem;
+  height: 3rem;
+  padding: 0.5rem;
+  background-color: rgba($color: #000000, $alpha: 0.4);
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.model.open {
+  visibility: visible;
+  opacity: 1;
+  transform: scale(1);
+}
+
+.model-img {
+  width: auto;
+  max-width: 100%;
+  height: 100%;
+  display: block;
+  padding: 2rem 0 2rem;
+  margin: 0 auto;
+  line-height: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .gallery-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .gallery-box:nth-child(1) {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+
+  .gallery-box:nth-child(7) {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+  .model-img {
+    width: auto;
+    height: 80%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .gallery-container {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
