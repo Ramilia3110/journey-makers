@@ -24,7 +24,7 @@
 
     .cover-top__img {
       width: 100%;
-      max-width: 800px;
+      max-width: 1600px;
       height: 50vh;
       border-radius: 1.5rem;
       overflow: hidden;
@@ -41,13 +41,13 @@
       margin-top: 1.5rem;
       font-family: "Playfair Display", serif;
       font-size: 3.5rem;
-      color: #333;
+      color: #464949;
       text-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
     }
   }
 
   .cover-bottom {
-    width: 90%;
+    width: 80%;
     margin: 0 auto;
     padding: 2rem 0;
     .swiper-slide {

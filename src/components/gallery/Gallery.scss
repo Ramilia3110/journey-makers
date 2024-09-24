@@ -6,6 +6,9 @@
   justify-content: center;
   min-height: 100vh;
   width: 100%;
+  padding: 1.2rem; /* Add some padding around the gallery */
+  background-color: #f0f4f8; /* Light background for better contrast */
+  transition: background-color 0.3s ease; /* Smooth transition for background */
 }
 
 .gallery-container {
@@ -13,21 +16,32 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.2rem;
-  padding: 0 1.2rem;
+  padding: 0;
   justify-items: center;
   align-items: center;
+  transition: grid-template-columns 0.3s ease; /* Smooth transition for responsiveness */
 }
 
 .gallery-box {
   width: 100%;
   height: 200px;
   cursor: pointer;
+  border-radius: 10px; /* Rounded corners */
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Soft shadow */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animation for hover effect */
+
+  &:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+  }
 }
 
 .gallery .pics {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform 0.3s ease; /* Smooth transition for images */
 }
 
 .gallery-box:nth-child(1) {
@@ -49,13 +63,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #000000;
+  background-color: rgba(0, 0, 0, 0.8); /* Dark background for modal */
   visibility: hidden;
   opacity: 0;
   transform: scale(0);
   overflow: hidden;
   z-index: 110;
+  transition: opacity 0.3s ease, transform 0.3s ease; /* Smooth transition for modal */
 }
+
 .model-close {
   position: fixed;
   top: 1rem;
@@ -63,9 +79,15 @@
   width: 3rem;
   height: 3rem;
   padding: 0.5rem;
-  background-color: rgba($color: #000000, $alpha: 0.4);
+  background-color: rgba(0, 0, 0, 0.4);
   color: #ffffff;
+  border-radius: 50%; /* Rounded close button */
   cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.6); /* Darker on hover */
+  }
 }
 
 .model.open {
@@ -75,37 +97,39 @@
 }
 
 .model-img {
-  width: auto;
-  max-width: 100%;
-  height: 100%;
+  max-width: 90%;
+  max-height: 80%; /* Constrain height */
   display: block;
-  padding: 2rem 0 2rem;
-  margin: 0 auto;
-  line-height: 0;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Ensure full image is shown */
+    transition: transform 0.3s ease; /* Smooth transition for images */
+  }
 }
 
+/* Media Queries for Responsive Design */
 @media screen and (max-width: 768px) {
   .gallery-container {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(
+      2,
+      1fr
+    ); /* Adjust columns for medium screens */
   }
 
-  .gallery-box:nth-child(1) {
-    grid-column: span 1;
-    grid-row: span 1;
-  }
-
+  .gallery-box:nth-child(1),
   .gallery-box:nth-child(7) {
-    grid-column: span 1;
-    grid-row: span 1;
+    grid-column: span 1; /* Make spanning boxes occupy one column */
   }
+
   .model-img {
-    width: auto;
-    height: 80%;
+    height: 80%; /* Adjust height for medium screens */
   }
 }
 
 @media screen and (max-width: 480px) {
   .gallery-container {
-    grid-template-columns: repeat(1, 1fr);
+    grid-template-columns: repeat(1, 1fr); /* One column on small screens */
   }
 }

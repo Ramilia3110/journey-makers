@@ -14,7 +14,7 @@ const destinationsArray = [
   { id: "istanbul", img: images.c1, text: "From Istanbul with love!" },
   { id: "london", img: images.c2, text: "Lovely day for a walk!" },
   { id: "santorini", img: images.c3, text: "Nice music and dance, always..." },
-  { id: "newyork", img: images.c4, text: "Love,love, love!" },
+  { id: "newyork", img: images.c4, text: "Time for history!" },
   { id: "tokio", img: images.c5, text: "Lovely day for a walk!" },
   { id: "paris", img: images.c6, text: "Nice music and dance, always..." },
   { id: "kioto", img: images.c7, text: "Lovely day for a walk!" },

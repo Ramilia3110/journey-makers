@@ -68,6 +68,9 @@ a {
   width: 80%;
   margin: auto;
 }
+section {
+  padding: 3rem 0;
+}
 
 @mixin minimobile {
   @media (max-width: 480px) {
