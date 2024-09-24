@@ -1,7 +1,11 @@
 import "./Cover.scss";
 import { useState } from "react";
-import { MdKeyboardArrowLeft } from "react-icons/md";
-import { MdKeyboardArrowRight } from "react-icons/md";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination, Autoplay } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/autoplay";
 import images from "./../../constants/images";
 import Header from "./../header/Header";
 import { motion } from "framer-motion";
@@ -16,25 +20,11 @@ const destinationsArray = [
   { id: "kioto", img: images.c7, text: "Lovely day for a walk!" },
   { id: "berlin", img: images.c8, text: "Nice music and dance, always..." },
 ];
+
 const Cover = () => {
   const [selectedDestination, setSelectedDestination] = useState(
     destinationsArray[0]
   );
-
-  const slideLeft = () => {
-    var slider = document.querySelector(".slider");
-    if (slider) {
-      // Check if the slider element exists
-      slider.scrollLeft -= 500; // Scroll left by 500px
-    }
-  };
-  const slideRight = () => {
-    var slider = document.querySelector(".slider");
-    if (slider) {
-      // Check if the slider element exists
-      slider.scrollLeft += 500; // Scroll left by 500px
-    }
-  };
 
   const upVariants = {
     hidden: { y: 100, opacity: 0 },
@@ -54,35 +44,50 @@ const Cover = () => {
   return (
     <div className="cover">
       <Header />
-      <div className="cover-top">
+      <div className="cover-container">
+        {/* Cover Image and Title */}
         <motion.div
           className="cover-top__img"
           initial="hidden"
           whileInView="show"
           variants={upVariants}
         >
-          <img src={selectedDestination.img} alt="" />
+          <img src={selectedDestination.img} alt={selectedDestination.text} />
         </motion.div>
         <h1 className="cover-top__title">{selectedDestination.text}</h1>
       </div>
+
+      {/* Swiper with Image Cards */}
       <div className="cover-bottom">
-        <MdKeyboardArrowLeft className="arrow-icons" onClick={slideLeft} />
-        <div className="slider">
-          {destinationsArray.map((dest) => {
-            return (
+        <Swiper
+          modules={[Navigation, Pagination, Autoplay]}
+          spaceBetween={10}
+          slidesPerView={1}
+          loop={true}
+          autoplay={{ delay: 3000, disableOnInteraction: false }}
+          navigation
+          pagination={{ clickable: true }}
+          breakpoints={{
+            640: { slidesPerView: 2, spaceBetween: 20 },
+            768: { slidesPerView: 3, spaceBetween: 30 },
+            1024: { slidesPerView: 4, spaceBetween: 40 },
+          }}
+          onSlideChange={(swiper) => {
+            const currentSlideIndex = swiper.realIndex;
+            setSelectedDestination(destinationsArray[currentSlideIndex]);
+          }}
+        >
+          {destinationsArray.map((dest) => (
+            <SwiperSlide key={dest.id}>
               <div
-                key={dest.id}
                 className="img-container"
-                onClick={(e) => {
-                  setSelectedDestination(dest);
-                }}
+                onClick={() => setSelectedDestination(dest)}
               >
-                <img src={dest.img} />
+                <img src={dest.img} alt={dest.text} />
               </div>
-            );
-          })}
-        </div>
-        <MdKeyboardArrowRight className="arrow-icons" onClick={slideRight} />
+            </SwiperSlide>
+          ))}
+        </Swiper>
       </div>
     </div>
   );
